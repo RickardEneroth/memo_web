@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Memo application by Rickard Eneroth</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="memo.js"></script>
+</head>
+
+<body ng-app="myapp">
+	<h1>Memo</h1>
+	<div ng-controller="MyController" >
+  		<form>
+  			<table>
+  				<tr><td><b>Namn</b></td><td><input type="text" id="name" ng-model="myForm.name" ng-minlength="1" ng-maxlength="30"></td></tr>
+    			<tr><td><b>Memo</b></td><td><input type="text" id="memo" ng-model="myForm.memo" ng-minlength="1" ng-maxlength="30"></td></tr>
+			</table>
+			<p>
+			<button ng-click="myForm.submitTheFormGetAll()">Hämta alla memos</button>
+    		<button ng-click="myForm.submitTheFormGet()">Hämta alla memos för {{myForm.name}}</button>
+    		<button ng-click="myForm.submitTheFormDel()"><strong>Radera alla memos för {{myForm.name}}</strong></button>
+			<button ng-click="myForm.submitTheFormAdd()">Skapa nytt memo {{myForm.memo}} för {{myForm.name}}</button>
+  		</form>
+
+		<p>
+
+		<div ng-repeat="memo in memo_response.memos">
+			<b>User:</b> {{memo.userId}}<br>
+			<b>Memo:</b> {{memo.memo}}<br>
+			<b>Timestamp:</b> {{memo.timestamp}}<br>
+			<p>
+		</div>
+		<p><b>Antal visade memos:</b> {{memo_response.memos.length}}
+	</div>
+</body>
+</html>

@@ -9,9 +9,10 @@
 </head>
 
 <body ng-app="myapp">
-	<h1>Memo</h1>
-	<img src="memo_image.jpg">
+	<h2>Memo - en enkel "komihåg"-applikation av Rickard Eneroth</h2>
+	<img src="memo_image.jpg" width=80>
 	<div ng-controller="MyController" >
+
   		<form>
   			<table>
   				<tr><td><b>Namn</b></td><td><input type="text" id="name" ng-model="myForm.name" ng-minlength="1" ng-maxlength="30"></td></tr>
@@ -21,18 +22,20 @@
 			<button ng-click="myForm.submitTheFormGetAll()">Hämta alla memos</button>
     		<button ng-click="myForm.submitTheFormGet()">Hämta alla memos för {{myForm.name}}</button>
     		<button ng-click="myForm.submitTheFormDel()"><strong>Radera alla memos för {{myForm.name}}</strong></button>
-			<button ng-click="myForm.submitTheFormAdd()">Skapa nytt memo {{myForm.memo}} för {{myForm.name}}</button>
+			<button ng-click="myForm.submitTheFormAdd()">Skapa nytt memo "{{myForm.memo}}" för {{myForm.name}}</button>
   		</form>
 
 		<p>
 
 		<div ng-repeat="memo in memo_response.memos">
-			<b>User:</b> {{memo.userId}}<br>
+			<b>Namn:</b> {{memo.userId}}<br>
 			<b>Memo:</b> {{memo.memo}}<br>
-			<b>Timestamp:</b> {{memo.timestamp}}<br>
+			<b>Datum/Tid:</b> {{memo.timestamp}}<br>
 			<p>
 		</div>
+
 		<p><b>Antal visade memos:</b> {{memo_response.memos.length}}
 	</div>
 </body>
+
 </html>

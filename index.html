@@ -21,16 +21,18 @@
 			<p>
 			<button ng-click="myForm.submitTheFormGetAll()">Hämta alla memos</button>
     		<button ng-click="myForm.submitTheFormGet()">Hämta alla memos för {{myForm.name}}</button>
-    		<button ng-click="myForm.submitTheFormDel()"><strong>Radera alla memos för {{myForm.name}}</strong></button>
 			<button ng-click="myForm.submitTheFormAdd()">Skapa nytt memo "{{myForm.memo}}" för {{myForm.name}}</button>
   		</form>
 
 		<p>
 
 		<div ng-repeat="memo in memo_response.memos">
-			<b>Namn:</b> {{memo.userId}}<br>
-			<b>Memo:</b> {{memo.memo}}<br>
-			<b>Datum/Tid:</b> {{memo.timestamp}}<br>
+			<table border=1>
+				<tr><td><b>Namn:</b> {{memo.userId}}</td></tr>
+				<tr><td><b>Memo:</b> {{memo.memo}}</td></tr>
+				<tr><td><b>Datum/Tid:</b> {{memo.timestamp}}</td></tr>
+				<tr><td><form><button ng-click="myForm.submitTheFormDelete(memo.id)"><strong>Radera</strong></button></form></td></tr>
+			</table>
 			<p>
 		</div>
 
